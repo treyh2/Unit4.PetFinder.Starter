@@ -1,0 +1,32 @@
+#petList li:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+#petList li { 
+  list-style: none;
+  padding: 1em;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-size-adjust: large;
+}
+#petList{
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  text-decoration: underline;
+}
+
+body {
+  background-color: gray;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}

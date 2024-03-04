@@ -2,14 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <title>Pet Finder</title>
 </head>
 <body>
-    <h1>Pet Finder</h1>
-    
-    <script src="script.js"></script>
+        <h1>Pet Finder</h1>
+    <ol id="petList">
+    </ol>
+
+    <script>
+        // displays the list of pets
+        async function fetchPets() {
+            const response = await fetch('/api/v1/pets');
+            const pets = await response.json();
+
+            const petList = document.getElementById('petList');
+
+            pets.forEach(pet => {
+                const listItem = document.createElement('li');
+                listItem.textContent = pet.name;
+
+                // adds event listener to the name
+                listItem.addEventListener('click', () => {
+                    // direct to the pet's API endpoint
+                    window.location.href = `/api/v1/pets/${encodeURIComponent(pet.name)}`;
+                });
+
+                petList.appendChild(listItem);
+            });
+        }
+
+        // Fetch the list of pets on load
+        window.onload = fetchPets;
+    </script>
 </body>
 </html>
